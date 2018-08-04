@@ -65,7 +65,7 @@ build image mywebdav
 
 run image mywebdav
 
-    docker run -d -e "CONTAINER_TIMEZONE=Europe/Paris" -e DAVUSER=myuser" -e "DAVPASSWORD=mypassword" -v <localpath>:/share --name test -p 8080:80 myfancyindex
+    docker run -d -e "CONTAINER_TIMEZONE=Europe/Paris" -e WEBUSER=myuser" -e "WEBPASSWORD=mypassword" -v <localpath>:/share --name test -p 8080:80 myfancyindex
 
 ## External library
 
