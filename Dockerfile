@@ -1,4 +1,4 @@
-FROM nginx:1.13
+FROM nginx:1.15
 LABEL maintainer "fraoustin@gmail.com"
 
 ENV SET_CONTAINER_TIMEZONE false 
