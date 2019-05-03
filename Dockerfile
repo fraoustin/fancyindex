@@ -2,7 +2,8 @@ FROM nginx:1.15
 LABEL maintainer "fraoustin@gmail.com"
 
 ENV SET_CONTAINER_TIMEZONE false 
-ENV CONTAINER_TIMEZONE "" 
+ENV CONTAINER_TIMEZONE ""
+ENV DISABLE_AUTH true
 
 # manage user www-data
 RUN usermod -u 1000 www-data
