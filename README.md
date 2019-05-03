@@ -16,6 +16,7 @@ load when start image load file in
 
 - SET_CONTAINER_TIMEZONE (false or true) manage time of container
 - CONTAINER_TIMEZONE timezone of container
+- DISABLE_AUTH (false or true) allows you to disable auth on nginx
 - WEBUSER (default user)
 - WEBPASSWORD (default pass)
 - COLOR (default blue) for web ihm (blue, green, grey, greydark, orange, purple, red)
