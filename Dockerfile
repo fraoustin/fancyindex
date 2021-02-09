@@ -24,7 +24,7 @@ RUN apt-get update && apt-get install -y \
         wget \
     && rm -rf /var/lib/apt/lists/* 
 
-COPY ./src/default.conf /etc/nginx/conf.d/default.conf
+COPY ./src/nginx/* /etc/nginx/conf.d/
 RUN rm /etc/nginx/sites-enabled/default
 
 # add cmd nginx
