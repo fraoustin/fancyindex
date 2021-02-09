@@ -1,4 +1,4 @@
-FROM nginx:1.19
+FROM nginx:latest
 LABEL maintainer "fraoustin@gmail.com"
 
 ENV SET_CONTAINER_TIMEZONE false 
@@ -22,6 +22,7 @@ RUN apt-get update && apt-get install -y \
         apache2-utils \
         git \
         nginx-extras \
+        wget \
     && rm -rf /var/lib/apt/lists/* 
 
 COPY ./src/default.conf /etc/nginx/conf.d/default.conf
@@ -36,8 +37,10 @@ RUN chmod +x /usr/bin/rmauth
 # add theme
 RUN mkdir /theme
 WORKDIR /theme
-RUN git clone https://github.com/fraoustin/Nginx-Fancyindex-Theme.git
-ENV COLOR "blue" 
+RUN wget https://github.com/alehaa/nginx-fancyindex-flat-theme/releases/download/v1.1/nginx-fancyindex-flat-theme-1.1.tar.gz && tar xvzf nginx-fancyindex-flat-theme-1.1.tar.gz && rm nginx-fancyindex-flat-theme-1.1.tar.gz
+RUN rm flat-theme/theme.css
+COPY ./src/theme.css flat-theme/theme.css
+#ENV COLOR "blue" 
 
 RUN mkdir /share
 VOLUME /share
