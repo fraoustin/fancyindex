@@ -12,8 +12,7 @@ RUN usermod -u 1000 www-data
 COPY ./src/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-RUN mkdir /usr/share/docker-entrypoint.pre
-RUN mkdir /usr/share/docker-entrypoint.post
+RUN mkdir /usr/share/docker-entrypoint.pre &&  mkdir /usr/share/docker-entrypoint.post
 COPY ./src/00_init.sh /usr/share/docker-entrypoint.pre/00_init.sh
 RUN chmod +x -R /usr/share/docker-entrypoint.pre
 
@@ -31,14 +30,12 @@ RUN rm /etc/nginx/sites-enabled/default
 # add cmd nginx
 COPY ./src/cmd/addauth.sh /usr/bin/addauth
 COPY ./src/cmd/rmauth.sh /usr/bin/rmauth
-RUN chmod +x /usr/bin/addauth
-RUN chmod +x /usr/bin/rmauth
+RUN chmod +x /usr/bin/addauth && chmod +x /usr/bin/rmauth
 
 # add theme
 RUN mkdir /theme
 WORKDIR /theme
-RUN wget https://github.com/alehaa/nginx-fancyindex-flat-theme/releases/download/v1.1/nginx-fancyindex-flat-theme-1.1.tar.gz && tar xvzf nginx-fancyindex-flat-theme-1.1.tar.gz && rm nginx-fancyindex-flat-theme-1.1.tar.gz
-RUN rm flat-theme/theme.css
+RUN wget https://github.com/alehaa/nginx-fancyindex-flat-theme/releases/download/v1.1/nginx-fancyindex-flat-theme-1.1.tar.gz && tar xvzf nginx-fancyindex-flat-theme-1.1.tar.gz && rm nginx-fancyindex-flat-theme-1.1.tar.gz && rm flat-theme/theme.css
 COPY ./src/theme.css flat-theme/theme.css
 #ENV COLOR "blue" 
 
