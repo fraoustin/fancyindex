@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  schedule:
+    - cron: 0 3 * * *
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Docker image build for multiple architectures
+        uses: zmingxie/docker_buildx@v1.1
+        with:
+         # Name of the image
+         imageName: samip537/fancyindex-darktheme
+         publish: true
+         dockerHubUser: ${{ secrets.DOCKER_USERNAME }}
+         dockerHubPassword: ${{ secrets.DOCKER_PASSWORD }}

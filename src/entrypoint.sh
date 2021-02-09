@@ -11,7 +11,7 @@ fi
 
 if [ "$1" = 'app' ]; then
     /bin/run-parts --verbose --regex '\.(sh)$' "/usr/share/docker-entrypoint.pre"
-    cp /theme/Nginx-Fancyindex-Theme/mdl/color/$COLOR.min.css /theme/Nginx-Fancyindex-Theme/mdl/material.min.css
+    #cp /theme/Nginx-Fancyindex-Theme/mdl/color/$COLOR.min.css /theme/Nginx-Fancyindex-Theme/mdl/material.min.css
     nginx -g "daemon off;"
     /bin/run-parts --verbose --regex '\.(sh)$' "/usr/share/docker-entrypoint.post"
 fi
